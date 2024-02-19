@@ -3,31 +3,76 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: #e8e8e8;
+  --primary: #509C18;
+  --text: #343636;
+  --text-light: rgba(var(--text), 0.7);
+  --block: #d7d7d7;
+  --block-light: rgba(var(--block), 0.7);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+body.dark {
+  --background: #22252A;
+  --text: #e8e8e8;
+  --block: #3D3F43;
+}
+
+html {
+  font-size: 14px;
+  height: 100%;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--background);
+  color: var(--text);
+  font-family: sans-serif;
+  font-size: 1.25rem;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  background: var(--primary);
+  color: #FAFAFA;
+  width: 11rem;
+  padding: 0.5rem 0;
+  border-radius: 0.25rem;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+hr {
+  border-color: var(--block);
+}
+
+.input-holder input {
+  background: transparent;
+  outline: none;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  border-left: 2px solid var(--background);
+}
+
+.highlight {
+  color: var(--primary);
+}
+
+@media only screen and (min-width: 768px) {
+  
+  html {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2.75rem;
   }
 }
