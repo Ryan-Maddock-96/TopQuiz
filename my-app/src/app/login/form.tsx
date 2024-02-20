@@ -1,5 +1,5 @@
 import { FaKey, FaUserAlt } from "react-icons/fa"
-import { Input } from "../components/input"
+import { Input } from "../../components/input"
 
 export const LoginForm = () => {
     return (
