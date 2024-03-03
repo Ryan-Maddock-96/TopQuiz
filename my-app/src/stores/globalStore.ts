@@ -10,7 +10,11 @@ export enum Theme {
     Dark = 'dark'
 }
 
-export const useGlobalStore = create<GlobalStore>(((set) => ({
-    theme: Theme.Light,
-    setTheme: () => set((state) => (state.theme === Theme.Light ? {theme: Theme.Dark} : {theme: Theme.Light}))
+export const useGlobalStore = create<GlobalStore>(((set, get) => ({
+    theme: localStorage.getItem('theme') || Theme.Light,
+    setTheme: () => {
+        const selectedTheme = get().theme === Theme.Light ? Theme.Dark : Theme.Light
+        localStorage.setItem('theme', selectedTheme)
+        set(() => ({theme: selectedTheme}))
+    }
 })))
