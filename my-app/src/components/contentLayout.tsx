@@ -4,7 +4,8 @@ import Footer from "./footer"
 import { useGlobalStore } from "@/stores/globalStore";
 import { useUserStore } from "@/stores/userStore";
 import { useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
+import { SessionStatus } from "@/types/nextAuth";
 
 const font = Odibee_Sans({
     weight: '400',
@@ -21,9 +22,16 @@ export const PageStructure = ({
     const {getUser, userInfo} = useUserStore()
 
     useEffect(() => {
-        if (status === 'authenticated' && !userInfo && data?.access_token) {
+      if (status === SessionStatus.Authenticated) {
+        const currentTime = new Date().toISOString()
+        // If Authenticated and the token has expired logout 
+        if (currentTime > data.expires) {
+          signOut();
+        } else if(!userInfo && data?.access_token) {
+          // If Authenticated but the user info hasn't been set yet get the current user
           getUser(data.access_token)
         }
+      }
     })
 
     return (

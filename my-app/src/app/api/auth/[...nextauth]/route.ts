@@ -1,5 +1,5 @@
 // imports
-import { CredentialUser, CustomJWT, CustomSession, CustomSessionCallback } from "@/types/nextAuth";
+import { CredentialUser, CustomJWT, CustomSession } from "@/types/nextAuth";
 import NextAuth from "next-auth"
 import Credentials from 'next-auth/providers/credentials';
 
