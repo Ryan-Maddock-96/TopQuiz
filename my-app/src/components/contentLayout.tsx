@@ -6,6 +6,7 @@ import { useUserStore } from "@/stores/userStore";
 import { useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { SessionStatus } from "@/types/nextAuth";
+import { Header } from "./header";
 
 const font = Odibee_Sans({
     weight: '400',
@@ -36,7 +37,10 @@ export const PageStructure = ({
 
     return (
         <body className={`${font.className} ${theme} h-full flex flex-col px-5 md:px-24`}>
-            <main className="grow flex flex-col">{children}</main>
+            <main className="grow flex flex-col">
+              {status === SessionStatus.Authenticated && <Header />}
+              {children}
+            </main>
             <Footer />
         </body>
     )

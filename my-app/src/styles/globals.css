@@ -6,7 +6,7 @@
   --background: #e8e8e8;
   --primary: #509C18;
   --text: #343636;
-  --text-light: rgba(var(--text), 0.7);
+  --text-light: rgba(226, 226, 226, 0.7);
   --block: #d7d7d7;
   --block-light: rgba(var(--block), 0.7);
 }
@@ -36,8 +36,13 @@ button,
   background: var(--primary);
   color: #FAFAFA;
   width: 11rem;
-  padding: 0.5rem 0;
+  height: 40px;
   border-radius: 0.25rem;
+}
+
+.login button {
+  height: auto;
+  padding: 0.5rem 0;
 }
 
 button:hover {

@@ -23,7 +23,7 @@ export default function Login() {
     }
 
     return (
-        <div className='max-w-[500px] w-full flex flex-col items-center self-center gap-y-8 grow justify-center'>
+        <div className='login max-w-[500px] w-full flex flex-col items-center self-center gap-y-8 grow justify-center'>
           <h1>Welcome{showForm ? ' back!' : '!'}</h1>
           {showForm ? 
             <LoginForm /> 

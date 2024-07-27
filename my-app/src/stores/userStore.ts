@@ -1,5 +1,6 @@
 import { create } from "zustand"
 import { UserInfo } from "@/types/user";
+import { signOut } from "next-auth/react";
 
 interface UserStore {
     isLoggedIn: boolean
@@ -23,8 +24,13 @@ export const useUserStore = create<UserStore>(((set, get) => ({
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json"
             }
-        }).then((res) => res.json())
+        })
 
-        set(() => ({userInfo: response}))
+        if (!response.ok) {
+            signOut()
+        }
+
+        const json = await response.json()
+        set(() => ({userInfo: json}))
     }
 })))
